@@ -1,0 +1,79 @@
+1. Request-related Classes
+Direct Request
+Indirect Request
+Asking Someone to Move
+Request for Help
+Indirect Request to Stop
+
+2. Refusal-related Classes
+Direct Refusal
+Indirect Refusal
+Polite Refusal
+Avoiding an Invitation
+Refusing to Lend
+
+3. Sarcasm Classes
+Sarcasm: Late Arrival
+Sarcasm: Poor Performance
+Sarcasm: Messy Room
+Sarcasm: Broken Promise
+Sarcasm: Obvious Mistake
+
+4. Irony Classes
+Irony: Rain
+Irony: Technology Failure
+Irony: Perfect Timing
+Irony: Group Project
+Irony: Another Problem
+
+5. Rhetorical Question Classes
+Rhetorical Question: Repeated Mistake
+Rhetorical Question: Exam
+Rhetorical Question: Broken Object
+Rhetorical Question: Tiredness
+Rhetorical Question: Ignored Advice
+
+6. Praise and Appreciation Classes
+Genuine Praise: Project
+Genuine Praise: Academic Result
+Appreciation: Help
+Praise: Appearance
+Praise: Presentation
+
+7. Complaint Classes
+Complaint: Noise
+Complaint: Late Delivery
+Complaint: Group Member
+Complaint: Restaurant
+Complaint: Cancelled Plans
+
+8. Ambiguity Classes
+Ambiguous: Good News
+Ambiguous: Serious Mistake
+Ambiguous: Uncertain Help
+Ambiguous: Waiting
+Ambiguous: Indirect No
+
+9. Emotion/Attitude Classes
+Doubt
+Surprise
+Disappointment
+Sympathy
+Frustration
+
+10. Social Context Classes
+Teacher–Student
+Workplace
+Family
+Stranger
+Keeping a Secret
+
+
+Main classes:
+Not Specified
+Request
+Refusal
+Sarcasm/Irony
+Complaint
+Praise/Appreciation
+Other

@@ -948,6 +948,16 @@ elif (
 
             "প্রশংসা/ধন্যবাদ (Praise/Appreciation)",
 
+            "সন্দেহ (Doubt)",
+
+            "সহানুভূতি (Sympathy)",
+
+            "হতাশা (Frustration)",
+
+            "আশ্চর্য (Surprise)",
+
+            "দুঃখ/নিরাশা (Disappointment)",
+
             "অন্যান্য (Other)",
 
         ]

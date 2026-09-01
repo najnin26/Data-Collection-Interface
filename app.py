@@ -21,7 +21,7 @@ st.markdown(
     """
     <style>
         .stApp {
-            text-align: left;
+            text-align: left !important;
         }
 
         .main .block-container {
@@ -29,13 +29,27 @@ st.markdown(
             padding-right: 2rem;
         }
 
+        div[data-testid="stWidgetLabel"],
+        div[data-testid="stForm"],
+        div[data-testid="stTextArea"],
+        div[data-testid="stSelectbox"],
+        div[data-testid="stRadio"],
+        div[data-testid="stCheckbox"],
         .stForm,
         .stForm > div,
         .stRadio,
         .stSelectbox,
         .stTextArea,
         .stCheckbox {
-            text-align: left;
+            text-align: left !important;
+            justify-content: flex-start !important;
+            direction: ltr !important;
+        }
+
+        div[data-testid="stWidgetLabel"] > label {
+            text-align: left !important;
+            justify-content: flex-start !important;
+            display: block !important;
         }
     </style>
     """,

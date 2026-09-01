@@ -17,6 +17,31 @@ st.set_page_config(
     layout="wide",
 )
 
+st.markdown(
+    """
+    <style>
+        .stApp {
+            text-align: left;
+        }
+
+        .main .block-container {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .stForm,
+        .stForm > div,
+        .stRadio,
+        .stSelectbox,
+        .stTextArea,
+        .stCheckbox {
+            text-align: left;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 # ==============================================================================
 # FILE CONFIGURATION

@@ -13,7 +13,6 @@ from openpyxl import Workbook, load_workbook
 
 st.set_page_config(
     page_title="Bangla Pragmatics Data Collection",
-    page_icon="🗣️",
     layout="wide",
 )
 

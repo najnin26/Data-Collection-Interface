@@ -1,10 +1,13 @@
 
 import uuid
+import os
+import zipfile
 from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
 from openpyxl import Workbook, load_workbook
+from openpyxl.utils.exceptions import InvalidFileException
 
 
 # ==============================================================================
@@ -452,6 +455,19 @@ def participant_id_from_state(participant):
     return participant.get("participant_id")
 
 
+def save_workbook(wb):
+    """Write a complete workbook before replacing the live file."""
+    temp_file = EXCEL_FILE.with_name(
+        f"{EXCEL_FILE.stem}.{uuid.uuid4().hex}.tmp.xlsx"
+    )
+    try:
+        wb.save(temp_file)
+        os.replace(temp_file, EXCEL_FILE)
+    finally:
+        if temp_file.exists():
+            temp_file.unlink()
+
+
 # ==============================================================================
 # INITIALIZE EXCEL FILE
 # ==============================================================================
@@ -459,7 +475,18 @@ def participant_id_from_state(participant):
 def init_excel():
 
     if EXCEL_FILE.exists():
-        wb = load_workbook(EXCEL_FILE)
+        try:
+            wb = load_workbook(EXCEL_FILE)
+        except (zipfile.BadZipFile, InvalidFileException, OSError):
+            recovery_file = EXCEL_FILE.with_name(
+                f"{EXCEL_FILE.stem}.corrupt-{uuid.uuid4().hex}.xlsx"
+            )
+            EXCEL_FILE.replace(recovery_file)
+            st.warning(
+                "The response workbook was unreadable and has been preserved as "
+                f"{recovery_file.name}. A new workbook has been created."
+            )
+            wb = Workbook()
     else:
         wb = Workbook()
 
@@ -530,7 +557,7 @@ def init_excel():
         ]
         usability_ws.append(usability_headers)
 
-    wb.save(EXCEL_FILE)
+    save_workbook(wb)
 
 
 # ==============================================================================
@@ -592,7 +619,7 @@ def save_response(
 
     ])
 
-    wb.save(EXCEL_FILE)
+    save_workbook(wb)
     return True
 
 
@@ -648,7 +675,7 @@ def save_usability_feedback(
 
     ])
 
-    wb.save(EXCEL_FILE)
+    save_workbook(wb)
 
 
 # ==============================================================================

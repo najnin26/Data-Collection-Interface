@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bangla Pragmatics Data Collection</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ============================= HEADER ============================= -->
+  <header class="app-header">
+    <h1>🗣️ Bangla Pragmatics Data Collection</h1>
+    <p class="subtitle">Context + Natural Utterance + Intended Meaning</p>
+  </header>
+
+  <!-- ==================== PAGE 1: PARTICIPANT INFO ==================== -->
+  <section id="page-participant" class="page active">
+    <div class="card">
+      <h2>গবেষণা সম্পর্কিত তথ্য</h2>
+
+      <p>
+        এই গবেষণায় আপনাকে কিছু দৈনন্দিন বাংলা পরিস্থিতি দেওয়া হবে।
+        প্রতিটি পরিস্থিতির জন্য আপনাকে লিখতে হবে:
+      </p>
+
+      <p><strong>১. আপনি স্বাভাবিকভাবে কী বলতেন।</strong></p>
+      <p><strong>২. এই কথা বলে আপনি আসলে কী বোঝাতে চেয়েছেন।</strong></p>
+
+      <p>
+        এখানে কোনো সঠিক বা ভুল উত্তর নেই। অনুগ্রহ করে স্বাভাবিক দৈনন্দিন
+        বাংলা ব্যবহার করুন। আপনি প্রমিত বাংলা, আঞ্চলিক বাংলা অথবা কথ্য
+        বাংলা ব্যবহার করতে পারেন।
+      </p>
+
+      <p class="warning">
+        ⚠️ অনুগ্রহ করে আপনার নাম, ফোন নম্বর, ইমেইল, ঠিকানা বা অন্য কোনো
+        ব্যক্তিগত পরিচয়মূলক তথ্য লিখবেন না।
+      </p>
+
+      <form id="participant-form">
+        <label>Age group</label>
+        <select id="age" required>
+          <option value="Under 18">Under 18</option>
+          <option value="18–24" selected>18–24</option>
+          <option value="25–34">25–34</option>
+          <option value="35–44">35–44</option>
+          <option value="45 or above">45 or above</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+
+        <label>Highest education</label>
+        <select id="education" required>
+          <option value="Secondary">Secondary</option>
+          <option value="Higher Secondary">Higher Secondary</option>
+          <option value="Undergraduate" selected>Undergraduate</option>
+          <option value="Master's">Master's</option>
+          <option value="PhD">PhD</option>
+          <option value="Other">Other</option>
+          <option value="Prefer not to say">Prefer not to say</option>
+        </select>
+
+        <label>How frequently do you use Bangla in everyday communication?</label>
+        <select id="usage" required>
+          <option value="Almost always" selected>Almost always</option>
+          <option value="Very frequently">Very frequently</option>
+          <option value="Frequently">Frequently</option>
+          <option value="Sometimes">Sometimes</option>
+          <option value="Rarely">Rarely</option>
+        </select>
+
+        <label>Bangla variety primarily used</label>
+        <select id="variety" required>
+          <option value="Standard Bangla" selected>Standard Bangla</option>
+          <option value="Regional/Dialectal Bangla">Regional/Dialectal Bangla</option>
+          <option value="Mixture of Standard and Regional Bangla">Mixture of Standard and Regional Bangla</option>
+          <option value="Other / Prefer not to say">Other / Prefer not to say</option>
+        </select>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="consent" />
+          <span>
+            I voluntarily agree to participate and allow my anonymous
+            responses to be used for academic research.
+          </span>
+        </label>
+
+        <div class="error" id="participant-error"></div>
+
+        <button type="submit" class="btn btn-primary">Start Questionnaire</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 2: SCENARIO ==================== -->
+  <section id="page-scenario" class="page">
+    <div class="card">
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="scenario-header">
+        <h3 id="scenario-counter">Scenario 1 of 50</h3>
+      </div>
+
+      <div class="break-notice" id="break-notice" style="display:none;">
+        ☕ আপনি প্রশ্নমালার অর্ধেক সম্পন্ন করেছেন! চাইলে কিছুক্ষণ বিরতি
+        নিতে পারেন। তারপর Continue করে প্রশ্নমালা সম্পন্ন করুন।
+      </div>
+
+      <div class="scenario-context">
+        <strong>পরিস্থিতি (Situation):</strong>
+        <span id="scenario-context"></span>
+      </div>
+
+      <details class="example-box">
+        <summary>💡 কীভাবে উত্তর দেবেন? একটি উদাহরণ দেখুন</summary>
+        <div class="example-content">
+          <p><strong>নমুনা পরিস্থিতি:</strong></p>
+          <p>আপনি বন্ধুর সাথে ঘরে বসে আছেন। বাইরে খুব ঠান্ডা এবং জানালা খোলা।</p>
+          <p><strong>১. আপনি যা বলবেন (Utterance):</strong></p>
+          <p><em>"আজকে আবহাওয়াটা একটু বেশিই ঠান্ডা, না?"</em></p>
+          <p><strong>২. আপনার আসল উদ্দেশ্য (Intended Meaning):</strong></p>
+          <p><em>"পরোক্ষভাবে বন্ধুকে জানালাটা বন্ধ করতে বলা।"</em></p>
+        </div>
+      </details>
+
+      <form id="scenario-form">
+
+        <label class="q-label">
+          ১. এই পরিস্থিতিতে আপনি স্বাভাবিকভাবে কী বলবেন?
+          <span class="q-en">(What would you naturally say?)</span>
+        </label>
+        <textarea id="utterance" rows="4"
+          placeholder="উদাহরণ: আপনি বাস্তবে যেভাবে বলতেন সেভাবে লিখুন (আঞ্চলিক বা প্রমিত বাংলায়)..."></textarea>
+
+        <label class="q-label">
+          ২. এই কথা বলে আপনি মূল কী বোঝাতে চেয়েছেন?
+          <span class="q-en">(What was your intended meaning?)</span>
+        </label>
+        <textarea id="intended" rows="4"
+          placeholder="উদাহরণ: আপনার কথার মাধ্যমে আসল কী উদ্দেশ্য, অনুভূতি বা অর্থ প্রকাশ করতে চেয়েছেন তা লিখুন..."></textarea>
+
+        <label class="q-label">
+          ৩. (ঐচ্ছিক) আপনার উদ্দেশ্যটি মূলত কোন ধরণের?
+          <span class="q-en">(Optional: Select primary communicative function)</span>
+        </label>
+        <select id="intent-cat"></select>
+
+        <div class="error" id="scenario-error"></div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-secondary" id="btn-prev">← Previous</button>
+          <button type="submit" class="btn btn-primary" id="btn-next">Save &amp; Next →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============= PAGE 3: USABILITY FEEDBACK ============= -->
+  <section id="page-usability" class="page">
+    <div class="card">
+      <div class="success-banner">আপনি মূল প্রশ্নমালা সম্পন্ন করেছেন!</div>
+
+      <h2>📝 System Usability Feedback</h2>
+      <p>
+        এখন আমাদের ডেটা সংগ্রহ সিস্টেমের ব্যবহারযোগ্যতা সম্পর্কে আপনার মতামত দিন।
+        নিচের প্রতিটি বিবৃতির জন্য আপনার মতামত নির্বাচন করুন।
+      </p>
+
+      <p class="scale-legend">
+        <strong>স্কেল:</strong>
+        1 = সম্পূর্ণ অসম্মত · 2 = অসম্মত · 3 = নিরপেক্ষ ·
+        4 = সম্মত · 5 = সম্পূর্ণ সম্মত
+      </p>
+
+      <form id="usability-form">
+        <div id="usability-questions"></div>
+
+        <label class="q-label">
+          এই সিস্টেমটি ব্যবহার করার অভিজ্ঞতা সম্পর্কে আপনার কোনো
+          পরামর্শ বা মন্তব্য থাকলে লিখুন (ঐচ্ছিক):
+        </label>
+        <textarea id="feedback" rows="5"></textarea>
+
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============= PAGE 4: THANK YOU ============= -->
+  <section id="page-thanks" class="page">
+    <div class="card thank-you">
+      <h2>✅ Thank you!</h2>
+      <p>Your responses and usability feedback have been successfully recorded.</p>
+
+      <h3>আপনার অংশগ্রহণের জন্য অসংখ্য ধন্যবাদ। 🙏</h3>
+      <p>
+        আপনার উত্তরগুলো বাংলা প্র্যাগম্যাটিক্স এবং ভাষাগত উদ্দেশ্য
+        বিশ্লেষণ সম্পর্কিত গবেষণায় ব্যবহার করা হবে।
+      </p>
+
+      <div class="download-box">
+        <p><strong>Admin:</strong> Download collected data as Excel:</p>
+        <button class="btn btn-download" id="btn-download">⬇ Download Excel (Responses)</button>
+        <button class="btn btn-download" id="btn-download-usability">⬇ Download Excel (Usability)</button>
+      </div>
+
+      <button class="btn btn-secondary" id="btn-new-response">Start a New Response</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="js/scenarios.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

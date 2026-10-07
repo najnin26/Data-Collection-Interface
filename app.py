@@ -1,6 +1,5 @@
 
 import uuid
-import hmac
 import os
 import zipfile
 from datetime import datetime
@@ -517,49 +516,6 @@ if "scenario_start_time" not in st.session_state:
 
 if "usability_completed" not in st.session_state:
     st.session_state.usability_completed = False
-
-if "admin_export_unlocked" not in st.session_state:
-    st.session_state.admin_export_unlocked = False
-
-admin_password = os.environ.get("ADMIN_PASSWORD", "")
-if not admin_password:
-    try:
-        admin_password = st.secrets["admin_password"]
-    except (KeyError, FileNotFoundError):
-        admin_password = ""
-
-with st.sidebar:
-    with st.expander("Researcher data export"):
-        if not admin_password:
-            st.caption("Data export is disabled until an admin password is configured.")
-        else:
-            with st.form("admin_export_access"):
-                provided_password = st.text_input("Admin password", type="password")
-                unlock_submitted = st.form_submit_button("Unlock")
-
-            if unlock_submitted:
-                st.session_state.admin_export_unlocked = hmac.compare_digest(
-                    provided_password,
-                    str(admin_password),
-                )
-                if not st.session_state.admin_export_unlocked:
-                    st.error("Incorrect admin password.")
-
-            if st.session_state.admin_export_unlocked:
-                st.download_button(
-                    "Download response workbook",
-                    data=EXCEL_FILE.read_bytes(),
-                    file_name=EXCEL_FILE.name,
-                    mime=(
-                        "application/vnd.openxmlformats-officedocument."
-                        "spreadsheetml.sheet"
-                    ),
-                    key="download_response_workbook",
-                )
-                if st.button("Lock data export"):
-                    st.session_state.admin_export_unlocked = False
-                    st.rerun()
-
 
 # ==============================================================================
 # MAIN TITLE

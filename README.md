@@ -6,8 +6,8 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The app contains 50 Bangla pragmatic scenarios and stores each completed response
-in `data/bangla_pragmatics_responses.xlsx`.
+The app contains 25 Bangla pragmatic scenarios focused on university student life
+and stores each completed response in `data/bangla_pragmatics_responses.xlsx`.
 
 ## Excel fields
 - Participant demographics
